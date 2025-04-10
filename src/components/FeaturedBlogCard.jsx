@@ -1,27 +1,24 @@
-export function FeaturedBlogCard() {
+// http://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat
+const formatter = new Intl.NumberFormat('en-US', {
+	notation: 'compact',
+});
+
+export function FeaturedBlogCard({
+	image,
+	title,
+	description,
+	category,
+	viewCount,
+}) {
 	return (
 		<div className="flex bg-white rounded-xl shadow h-56 overflow-hidden">
-			<img
-				src="https://digitalsynopsis.com/wp-content/uploads/2019/08/beautiful-illustrations-design-inspiration-37.png"
-				className="h-full w-[30%] object-cover"
-			/>
+			<img src={image} className="h-full w-[30%] object-cover" />
 			<div className="flex-1 p-4">
-				<h3 className="text-purple-500 text-sm">MARKETING</h3>
-				<h1 className="font-bold text-2xl">
-					Embrace the power of story telling in business
-				</h1>
-				<p className="line-clamp-3">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit.
-					Nobis, dolores aut eligendi sunt cupiditate vel corrupti
-					recusandae quam velit. Rerum aliquid labore architecto ipsam
-					placeat aut! Quas libero deleniti suscipit doloribus. Lorem
-					ipsum dolor sit amet consectetur adipisicing elit.
-					Necessitatibus deserunt praesentium reiciendis tempore unde
-					aliquid eius architecto doloribus, ut harum, quidem fugit
-					rem! Laudantium ad saepe molestias, suscipit accusamus quam.
-				</p>
+				<h3 className="text-purple-500 text-sm">{category}</h3>
+				<h1 className="font-bold text-2xl">{title}</h1>
+				<p className="line-clamp-3">{description}</p>
 				<div className="flex justify-between mt-2.5">
-					<span>1.6k</span>
+					<span>{formatter.format(viewCount)}</span>
 					<span>Share</span>
 				</div>
 			</div>
