@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { BlogCard } from './components/BlogCard';
 import { FeaturedBlogCard } from './components/FeaturedBlogCard';
 import { SearchBar } from './components/SearchBar';
+import './App.css';
+import { BlogForm } from './components/BlogForm';
 
 const blogOne = {
 	title: 'React',
@@ -61,21 +63,24 @@ const Button = () => {
 function App() {
 	// React state -> dynamic data in a component
 	const [count, updateCount] = useState(0);
-	const [blogs, setBlogs] = useState(data);
+	const [blogs, setBlogs] = useState([]);
 
-	const [title, setTitle] = useState('');
-	const [description, setDescription] = useState('');
-	const [category, setCategory] = useState('');
-	const [image, setImage] = useState('');
+	const sayHi = () => {
+		console.log('Good afternoon');
+	};
+
+	const handleFetch = () => {
+		fetch('http://localhost:3000/blogs')
+			.then((res) => res.json())
+			.then((data) => {
+				setBlogs(data);
+			});
+	};
 
 	// TO BE COVERED LATER
-	// useEffect(() => {
-	// 	fetch('http://localhost:3000/blogs')
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			setBlogs(data);
-	// 		});
-	// }, []);
+	useEffect(() => {
+		handleFetch();
+	}, []);
 
 	return (
 		<main className="min-h-screen flex p-8 gap-3 bg-gray-100 font-poppins">
@@ -129,71 +134,7 @@ function App() {
 			</div>
 			<div className="flex-1">
 				News
-				<form
-					action=""
-					className="border p-2 rounded-xl w-full space-y-3"
-					onSubmit={(e) => {
-						e.preventDefault();
-						console.log({ title, description, category, image });
-						// update blogs with new values from form
-						setBlogs([
-							...blogs,
-							...[{ title, description, category, image }],
-						]);
-						// clear form
-						setTitle('');
-					}}
-				>
-					<div>
-						<label htmlFor="">Title</label>
-						<input
-							type="text"
-							placeholder="title"
-							className="p-2 bg-white border w-full rounded-lg"
-							onChange={(e) => {
-								setTitle(e.target.value);
-							}}
-						/>
-					</div>
-					<div>
-						<label htmlFor="">Description</label>
-						<textarea
-							name=""
-							id=""
-							placeholder="description"
-							className="p-2 bg-white border w-full rounded-lg"
-							onChange={(e) => {
-								setDescription(e.target.value);
-							}}
-						></textarea>
-					</div>
-					<div>
-						<label htmlFor="">Category</label>
-						<input
-							type="text"
-							placeholder="Category"
-							className="p-2 bg-white border w-full rounded-lg"
-							onChange={(e) => {
-								setCategory(e.target.value);
-							}}
-						/>
-					</div>
-					<div>
-						<label htmlFor="image">Image</label>
-						<input
-							id="image"
-							type="text"
-							placeholder="image"
-							className="p-2 bg-white border w-full rounded-lg"
-							onChange={(e) => {
-								setImage(e.target.value);
-							}}
-						/>
-					</div>
-					<button className="w-full p-2 bg-amber-300 rounded-lg">
-						Save
-					</button>
-				</form>
+				<BlogForm day="Wed" sayHi={sayHi} handleFetch={handleFetch} />
 			</div>
 		</main>
 	);

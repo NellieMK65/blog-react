@@ -1,0 +1,44 @@
+{
+  "blogs": [
+    {
+      "id": "9b25",
+      "title": "React",
+      "description": "Learning react",
+      "category": "Tech",
+      "image": "https://cdn.pixabay.com/photo/2024/08/30/10/15/woman-9009013_1280.png",
+      "author": ""
+    },
+    {
+      "id": "c34f",
+      "title": "10 ways to take your UI design game to the next level",
+      "description": "UI",
+      "category": "UI/UX",
+      "image": "https://www.istockphoto.com/resources/images/IllustrationsLanding/SignatureTile-1318319153.jpg",
+      "author": ""
+    },
+    {
+      "id": "8f82",
+      "title": "JS",
+      "description": "JS objects",
+      "category": "Tech",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP_endJ0irj_csDdx69b2bo8te3UMTrDDPXQ&s",
+      "author": ""
+    },
+    {
+      "id": "ae1c",
+      "title": "Vite",
+      "description": "dgd",
+      "category": "Tech",
+      "image": "https://cdn.thewirecutter.com/wp-content/media/2024/03/computer-speaker-2048px-3550.jpg?auto=webp&quality=75&crop=1.91:1&width=1200",
+      "author": ""
+    },
+    {
+      "id": "37a8",
+      "title": "Github",
+      "description": "Collaborating using github",
+      "category": "Project Management",
+      "image": "https://www.mobilehub.co.ke/storage/2024/10/Samsung-S24-Ultra-Price-in-Kenya-001-Mobilehub-Kenya.jpg",
+      "author": ""
+    }
+  ]
+}
