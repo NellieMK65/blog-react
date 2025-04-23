@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { BlogCard } from './components/BlogCard';
-import { FeaturedBlogCard } from './components/FeaturedBlogCard';
-import { SearchBar } from './components/SearchBar';
-import './App.css';
-import { BlogForm } from './components/BlogForm';
-
-// WE HAVE MOVED ALL THIS LOGIC TO pages/HomePage
+// import link
+import { Link } from 'react-router-dom';
+import { BlogCard } from '../components/BlogCard';
+import { FeaturedBlogCard } from '../components/FeaturedBlogCard';
+import { SearchBar } from '../components/SearchBar';
+import '../App.css';
+import { BlogForm } from '../components/BlogForm';
 
 const blogOne = {
 	title: 'React',
@@ -62,7 +62,7 @@ const Button = () => {
 	return <button className="p-3 bg-blue-300">My Button</button>;
 };
 
-function App() {
+function HomePage() {
 	// React state -> dynamic data in a component
 	const [count, updateCount] = useState(0);
 	const [blogs, setBlogs] = useState([]);
@@ -87,7 +87,7 @@ function App() {
 	return (
 		<main className="min-h-screen flex p-8 gap-3 bg-gray-100 font-poppins">
 			<div className="w-[70%] space-y-3">
-				<button
+				{/* <button
 					className="border bg-amber-300 p-3"
 					onClick={() => {
 						console.log('Button clicked');
@@ -95,7 +95,12 @@ function App() {
 					}}
 				>
 					Count {count}
-				</button>
+				</button> */}
+				<Link to={'/about'}>
+					<button className="hover:cursor-pointer border bg-amber-300 p-3">
+						About Us
+					</button>
+				</Link>
 
 				<h1 className="font-semibold text-2xl">Latest Blogs</h1>
 				<SearchBar />
@@ -120,18 +125,18 @@ function App() {
 				<div className="grid grid-cols-2 gap-6">
 					{/* This was the first implementation */}
 					{/* <BlogCard {...blogOne} />
-					<BlogCard {...blogTwo} />
-					<BlogCard />
-					<BlogCard /> */}
+                    <BlogCard {...blogTwo} />
+                    <BlogCard />
+                    <BlogCard /> */}
 
 					{/* List and keys */}
 					{blogs.map((blog, index) => (
-						<BlogCard key={index} {...blog} />
+						<BlogCard key={index} {...blog} day={'Wen'} />
 					))}
 
 					{/* {blogs.map(function (blog) {
-						return <BlogCard key={blog.id} {...blog} />;
-					})} */}
+                        return <BlogCard key={blog.id} {...blog} />;
+                    })} */}
 				</div>
 			</div>
 			<div className="flex-1">
@@ -142,4 +147,4 @@ function App() {
 	);
 }
 
-export default App;
+export default HomePage;
